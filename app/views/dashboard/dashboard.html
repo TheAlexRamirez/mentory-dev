@@ -1,0 +1,114 @@
+<section class="section single-wrap">
+            <div class="container">
+                
+
+                <div ng-cloak>
+                      <md-content style="background-color:#fafafa">
+                       
+                        <md-tabs md-dynamic-height md-border-bottom>
+                          
+                          <md-tab label="Perfil" >
+
+                            <md-content class="md-padding">
+                              <h4 class="md-display-2" style="font-family:futura-Medium; ">Tus ajustes de <a ng-href="#profile/{{app.loggedInUser.iduser}}" style="color:#4FC3F7">Perfil</a></h4>
+
+                              
+                               <settings-component></settings-component>
+
+                            </md-content>
+                          </md-tab>
+
+                         
+
+                          <md-tab label="Pagos y Cobros">
+                            <md-content class="md-padding">
+
+                              <h4 class="md-display-2 text-center" style="font-family:futura-Medium">Hacemos más facil la manera de gestionar tu dinero</h4>
+
+
+                              <div class="col-md-6">
+
+                              <div class="card-visa-form">
+
+                                <div class="visa-form">
+
+                                  <input type="text" placeholder="Pon aqui tu numero de tarjeta">
+                                  <input type="password" placeholder="CVV">
+                                  <input type="date" >
+
+                                </div>
+
+                              </div>
+                                <div class="payment-methods" style="margin-top:5vh">
+                                      <ul class="list-inline text-left">
+                                              <li><a href="#"><img src="upload/payment_01.png" alt=""></a></li>
+                                              <li><a href="#"><img src="upload/payment_02.png" alt=""></a></li>
+                                              <li><a href="#"><img src="upload/payment_03.png" alt=""></a></li>
+                                              <li><a href="#"><img src="upload/payment_04.png" alt=""></a></li>
+                                              <li><a href="#"><img src="upload/payment_05.png" alt=""></a></li>
+                                              <li><a href="#"><img src="upload/payment_06.png" alt=""></a></li>
+                                        </ul>
+                                </div>
+
+                            </div><!--End col-->
+
+                            <div class="col-md-6">
+
+                              <div class="card-momey-form">
+
+                                <div class="money-choose">
+
+                                  <h6 style="font-family:futura-Medium">Te ayudamos a elegir tu precio</h6>
+                                  
+                                  <rzslider rz-slider-model="main.cost"  rz-slider-options="home.sliderOptions"></rzslider>
+
+                                </div>
+
+                              </div>
+
+                            </div><!--End col-->
+                              
+                            </md-content>
+                          </md-tab><!--End MdTab Dinero-->
+                          
+
+                          
+
+                          <md-tab label="Mis Mentorias Live">
+                            <md-content class="md-padding">
+                              <h1 style="font-family:futura-Medium" class="md-display-2">Mis Mentorias </h1>
+
+                              <a class="btn btn-primary " tabindex="-1" href="#/newMentory" style="border-radius:30px"><i class="fa fa-plus"></i> Crear nueva mentoria</a>
+                              
+                            </md-content>
+                          </md-tab>
+
+
+                          <md-tab label="Feedback">
+                            <md-content class="md-padding">
+                              <h1 class="md-display-2 text-center">Tu opinión siempre nos importa</h1>
+                                    <input type="text" placeholder="¿En que podemos mejorar?">
+                                    <button class="btn btn-primary"> Enviar feedback</button>
+                            </md-content>
+                          </md-tab>
+                          
+                          <md-tab label="Cerrar Sesión" ng-click="main.logOut()">
+                            <md-content class="md-padding">
+                              <h1 class="md-display-2 text-center">¡Nos vemos pronto!</h1>
+                            </md-content>
+                          </md-tab>
+
+                        </md-tabs>
+                      </md-content>
+                    </div> 
+
+
+               
+
+               <a href="#live" id="boton-live" class="hidden-xs hidden-sm"><img src="upload/logoWS.png" style="width:100%;"></a>
+
+           
+
+                
+            </div><!-- end container -->
+        </section>

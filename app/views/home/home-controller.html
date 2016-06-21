@@ -1,0 +1,333 @@
+<section class="section123 single-wrap">
+
+
+        <div class="col-lg-12" style="background: linear-gradient(135deg, #4DD0E1 0%,#F06292 100%); ">
+        
+            <div class="">
+     
+
+            <div class="preguntas-home">
+
+         
+            
+                
+                
+
+         
+
+                    <div class="col-md-1"></div>
+
+
+                   <div class="col-md-9" style="top:10vh"><!-- Start form -->
+
+                                    <h3 class="text-center text-home-hero "style="color:#fff ; font-family:futura-Medium">ASESORATE, EMPRENDE, CO. </h3>
+
+
+                                    <h2 style="color:#fff">¿Cúal es tu problema o que necesitas?</h2>
+                                    <input  ng-model="home.name"type="text" style="height:50px; background-color:#000; color:#fff; width:70%" placeholder=" Escribe aqui lo que necesitas...">
+                                    <input  ng-model="phone.user"type="text" style="height:50px; background-color:#EBEEF1; color:#fff; width:30%; float:right" placeholder=" (55)6566-1123">
+                                    
+
+                    </div>
+
+                    <div class="col-lg-1" style="top:9vh">
+
+                                
+                                
+                                <!-- end form -->
+
+                     </div>
+
+            
+            
+
+                     <div class="col-md-12 search-bg " id="col6-search" style="top:8vh">
+                        
+                         <button class="btn btn-primary" style="height: 50px; border-radius:30px" ng-click="home.goTo()" id="home-search-button"><h6 style="font-family: futura-Medium; color: #fff;"><i class="fa fa-send"></i> Buscar mentores</h6></button>
+
+                    </div>
+
+            </div>
+            
+
+
+             <div class="row">
+                <div class="col-md-12 " class="categories-icon-bg" id="col6-category">
+                    <div class="page-title public-profile-title">
+                        <div class="row">
+                            <div class="col-sx-12 text-center">
+
+                            <div class="tag-bg">
+
+                                <div class="col-md-2 text-left" id="categoriescollection" ng-repeat="category in home.categories | limitTo: 10" >
+                                   
+                                    <a href="#/discover/{{category.name}}" class="tooltip-top" data-tooltip="{{category.name}}">
+                                    
+                                    <span ng-switch="category.name">
+                                        <img style="bottom:0.5vh"class="img-responsive" id="caticon" ng-switch-when="Derecho" ng-src="images/iconcategories/law.jpg" >
+                                        <img  style="bottom:0.5vh" class="img-responsive" id="caticon" ng-switch-when="Tecnología" ng-src="images/iconcategories/tecnologia.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Gaming" ng-src="images/iconcategories/gaming.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Business" ng-src="images/iconcategories/Business.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Diseño" ng-src="images/iconcategories/orange.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Medicina" ng-src="images/iconcategories/medicina.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Motivación" ng-src="images/iconcategories/top.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Redes" ng-src="images/iconcategories/marketing.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Marketing" ng-src="images/iconcategories/ecommerce.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Lifestyle" ng-src="images/iconcategories/imagen.jpg" >
+                                        <p style="margin-top:1vh"></p>
+                                        
+                                    </span>
+                                    
+                                    </a>
+
+
+                
+                                </div><!-- end categoricollection -->
+
+                                </div><!-- end tga.bg -->
+
+
+                               
+
+
+                            </div><!-- end col.12 -->
+
+
+
+                        </div><!-- end row -->
+
+                        
+
+
+                        
+                        
+                        
+
+                        
+                        </div><!-- end publicprofile -->
+                    </div><!-- end Col-category -->
+
+
+
+                </div>
+
+                <p class="text-center" style="margin-top:1vh; color:#fff">*Busca nuevas ideas, estrategias y enfoques con los mejores asesores en coaching, tecnologia, inovación, empleo. <strong>Tus datos siempre estaran seguros</strong></p>
+
+            </div><!-- end Pregunta-Homes -->
+         </div><!-- end COl  PRINCIPAL-->
+
+
+
+            <div class="col-lg-9 col-sm-9">
+                
+                <div class="col-lg-12 col-sm-12" style="margin-top:1vh"><!-- Start COntainer 23 -->
+                <div class="">
+
+                            <div class="container23" style="background-color:#fafafa; margin-right:200px; ;padding:20px; width:100%">
+
+                             
+                                <h5 class="color:#000">Los mas recomendados para ti</h5>
+
+                                <div class="col-lg-12 col-sm-12" ng-repeat="user in home.users | orderBy : 'created' : 1 | limitTo:10 :0 " ng-click='home.goToProfile(user.iduser)' style="top:2vh; max-width:200px; max-height: 350px; margin:3vh; border: 1px solid #f0f0f0;    background-color: #EBEEF1; padding:10px"><!-- Start col Mentores.01-->
+
+
+                                   
+                                        <li class="text-line">
+                                        <div class="item-box" >
+
+                                            <div class="item-media entry">
+
+
+                                                <div class="theme__button" ng-style="{'background-image': 'url(' + user.imgcompany + ')', 'background-size': '50px 50px', 'background-position': 'center' }">
+                                                    
+                                                </div>
+                                               <img ng-src="{{user.profileimage}}"  alt="" class="img-responsive"  style="width:100%" >
+                                                <div class="magnifier2">
+                                                    
+                                                    <div class="item-author">
+                                                        
+                                                                                               
+                                                    
+                                                        
+                                                       
+                                                    </div><!-- end author -->
+                                                    
+                                                </div>
+                                            </div><!-- end item-media -->
+
+
+                                          
+
+                                            <h4 style="font-family:futura-Medium"><a ng-href="#/profile/{{user.iduser}}/#tab-reserv">{{user.name}}</a></h4>
+                                            <p style="color:#000;" class="item-author-titule text-center">{{user.job}}</p> 
+
+                                            <div style="bottom:0">
+                                            
+
+                                            <button class="btn btn-primary" style="border-radius:30px; margin-top:2vh;" ng-click="home.goToProfile(user.iduser)"><i class="fa fa-phone"></i>Llamar</button><!-- end form -->
+                                            
+
+                                            </div>
+
+                                            
+                                
+                                
+                                    </div><!-- end item-box -->
+                                  
+                                    </li>
+                                </div><!-- end col Mentores.01-->
+
+                               
+                                
+
+
+
+                        </div>
+                
+
+                    </div>
+                 </div>
+                 
+            
+
+                
+            </div><!-- end Row -->
+
+        
+
+
+
+
+
+            <div class="container1">
+
+
+
+
+                            
+								
+                <div class="content" style="background-color:#EBEEF1">
+
+
+
+
+                    
+
+                    <div class="row">
+                        <rzslider rz-slider-model="home.searchCost"  rz-slider-options="home.sliderOptions"></rzslider>
+                        
+                        <div class="tag-bg">
+
+                                <div class="col-md-2 text-left" id="categoriescollection" ng-repeat="category in home.categories | limitTo: 10" >
+                                   
+                                    <a href="#/discover/{{category.name}}" class="tooltip-top" data-tooltip="{{category.name}}">
+                                    
+                                    <span ng-switch="category.name">
+                                        <img style="bottom:0.5vh"class="img-responsive" id="caticon" ng-switch-when="Derecho" ng-src="images/iconcategories/law.jpg" >
+                                        <img  style="bottom:0.5vh" class="img-responsive" id="caticon" ng-switch-when="Tecnología" ng-src="images/iconcategories/tecnologia.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Gaming" ng-src="images/iconcategories/gaming.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Business" ng-src="images/iconcategories/Business.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Diseño" ng-src="images/iconcategories/orange.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Medicina" ng-src="images/iconcategories/medicina.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Motivación" ng-src="images/iconcategories/top.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Redes" ng-src="images/iconcategories/marketing.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Marketing" ng-src="images/iconcategories/ecommerce.jpg" >
+                                        <img class="img-responsive" id="caticon" ng-switch-when="Lifestyle" ng-src="images/iconcategories/imagen.jpg" >
+                                        <p style="margin-top:1vh"></p>
+                                        
+                                    </span>
+                                    
+                                    </a>
+
+
+                
+                                </div><!-- end categoricollection -->
+
+                                </div><!-- end tga.bg -->
+
+                        
+
+
+
+
+                        
+	     
+                    </div><!-- end Row -->
+
+                    
+                </div>
+
+                       
+                
+            </div><!-- end container -->
+
+            <div class="content-message boxs" style="background: linear-gradient(135deg, #4DD0E1 0%,#F06292 100%);">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 text-center">
+                            <!--<img stye="background-img responsive-img" src="upload/baner.jpg">-->
+                           
+                            <div class="logoclients">
+                                    <h1 style="font-family:futura-Medium; color:#fff">Muchas personas ya usan nuestra plataforma</h1>
+
+
+
+                                    <div class="Quote">
+                                       <h4 style="color:#fff" class="name-quote"> Louren Philipes</h4>
+                                       <div class="img-quote">
+                                           <img  class="img-circule"  style="border-radius:100%" src="upload/louren.jpg">
+                                       </div>
+                                       <div class="text-qoute">
+                                           <p style="color:#fff">Desde San Francisco pude mentorizarme en Angular.js facil y con un buen precio!!!</p>
+                                       </div>
+                                   </div>
+
+
+                                    
+
+                            </div>
+                        </div>
+                    </div><!-- end row -->
+                </div><!-- end content message -->
+
+               <div class="colaborators-company" style="width:100%; height:100px; background-color:#fafafa; border: 1px solid #f0f0f0">
+
+                   <div class="col-lg-12 logocollection-2 text-center">
+                            <img src="assetsLanding/img/wayra.jpg" style="width: 5%">
+                            <img src="assetsLanding/img/dev-f.png" style="width: 7%">
+                            <img src="assetsLanding/img/ideo.png" style="width: 7%; margin:1px">
+                            <img src="assetsLanding/img/adidas.png" style="width: 5%">
+                            <img src="assetsLanding/img/santander.jpg" style="width: 10%">
+                            <img src="assetsLanding/img/techshop.png" style="width: 10%">
+                            <img src="http://www.userlogos.org/files/logos/siipikarja/google_black.png" style="width: 7%">
+                            
+                    </div>
+
+
+            </div>
+
+
+                <div class="content-message boxs">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 text-center">
+                            <!--<img stye="background-img responsive-img" src="upload/baner.jpg">-->
+                           
+                            <div class="logoclients">
+                                    
+                                <h1 style="font-family:futura-Medium; color:#000">Encuentra el mentor que necesitas!</h1>
+
+
+                                    <img src="assetsLanding/img/phone.jpg">
+
+                                    <a href="#home" class="topbutton btn btn-primary" style="border-radius:20px;     border: 2px solid #4FC3F7;
+                        color: #4FC3F7;background: transparent !important;">Buscar Mentores
+                        </a>
+                                    
+
+                            </div>
+                        </div>
+                    </div><!-- end row -->
+                </div><!-- end content message -->
+
+             
+            
+        </section>
