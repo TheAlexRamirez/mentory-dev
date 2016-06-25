@@ -142,13 +142,14 @@
                                                 
                                                 ¿Cual es tu dolor? Escribe una breve introducción <br><textarea type="text" style="height:150px; width: 100%" ng-model="profile.book.reason" placeholder="Example: I admire your business and the growth I have seen - I'd like to discuss the importance you place on community involvement and how my company could benefit from it." ng-required="true"></textarea><br><br>
                                                 ¿Durante cuanto tiempo quieres hablar?: <select type="number" style="width: 80%;display:inline;" ng-model="profile.book.estimatedTime" placeholder="15" ng-required="true">
-                                                    <option>15</option>
-                                                    <option>30</option>
-                                                    <option>50</option>
-                                                    <option>120</option>
-                                                    <option>170</option>
+                                                    <option value='' disabled selected><i class="arrow-down"></i>Escoge tu tiempo</option>
+                                                    <option>15 minutos</option>
+                                                    <option>30 minutos</option>
+                                                    <option>50 minutos</option>
+                                                    <option>120 minutos</option>
+                                                    <option>170 minutos</option>
                                                 </select>
-                                                  minutos.<br><br>
+                                                  .<br><br>
 
                                                 <p><i class="fa fa-clock-o"></i>Escoge 2 fechas en la que estás libre</p>
                                                 <p>Propuesta 1. </p>
@@ -317,7 +318,7 @@
 
                                     
                                     
-                                    <div class="col-lg-12" ng-repeat="user in profile.users | " ng-click='profile.goToProfile(user.iduser)' style="top:2vh; max-width:200px; margin:3vh; border: 1px solid #f0f0f0;    background-color: #EBEEF1; padding:10px"><!-- Start col Mentores.01-->
+                                    <div class="col-lg-12" ng-repeat="Person in profile.user | " ng-click='profile.goToProfile(user.iduser)' style="top:2vh; max-width:200px; margin:3vh; border: 1px solid #f0f0f0;    background-color: #fafafa; padding:10px"><!-- Start col Mentores.01-->
 
 
                                    

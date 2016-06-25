@@ -14,7 +14,7 @@
             <div class="row">
             <br>
             
-			<h2  class="text-center"style="color:#000">Buscaste :  {{search.search}}</h2>
+			<h2  class="text-center"style="color:#000">Tu busqueda es :  {{search.search}}</h2>
           	<br>
 
             </div><!-- end Row -->
@@ -46,7 +46,7 @@
                     <div class="row">
 						
 						<div class="col-md-12 col-sx-12 cen-xs" ng-if="!search.mentories">
-							<h1>No hay mentorías de tu busqueda.</h1>
+							<h1>Lo sentimos, No hemos encontrado expertos con tu busqueda.¿Quieres buscar por <a>Categorias</a>?</h1>
 						</div>
 						
                         <div class="col-md-4 col-sm-6" ng-repeat="mentory in search.mentories | orderBy: sortType " ng-click='search.goToMentory(mentory.idmentory)'>
@@ -56,7 +56,7 @@
                                     <div class="theme__button">
                                         <p><a href="single-item.html" title="">{{mentory.cost | currency}}</a></p>
                                     </div>
-                                    <img ng-src="{{mentory.person.profileimage}}" alt="" class="img-responsive" >
+                                    <img ng-src="{{person.profileimage}}" alt="" class="img-responsive" >
                                     <div class="magnifier">
 										
                                         <div class="item-author">

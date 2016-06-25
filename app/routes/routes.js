@@ -40,7 +40,7 @@
 
 		
 		$routeProvider
-		.when('/home',
+		.when('/',
         {
           templateUrl : './app/views/landing/landing.html',
           controller  : 'landingCtrl',
@@ -49,7 +49,7 @@
 				
           }
         })
-		 .when('/',
+		 .when('/home',
         {
           templateUrl : './app/views/home/home-controller.html',
           controller  : 'homeCtrl',
@@ -60,10 +60,10 @@
 					Person.isAuthenticated();
 				}] , "users" : ["Person" ,function(Person){
 					return Person.find( {  
-					filter: 	{ limit : 20 , include: ["categories"] }}); 	
+					filter: 	{ limit : 25 , include: ["categories"] }}); 	
 				}], "categories" : ["Category" ,function(Category){
 					return Category.find( {  
-					filter: 	{ limit : 14 }}); 	
+					filter: 	{ limit : 50 }}); 	
 				}]
           },
 			authenticate: true
@@ -128,6 +128,15 @@
           templateUrl : './app/views/agenda/agenda.html',
           controller  : 'agendaCtrl',
           controllerAs: 'agenda',
+          resolve : {
+            
+          }
+        })
+        .when('/jobs',
+        {
+          templateUrl : './app/views/jobs/jobs.html',
+          controller  : 'jobsCtrl',
+          controllerAs: 'jobs',
           resolve : {
             
           }

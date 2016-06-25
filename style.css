@@ -752,7 +752,7 @@ hr.largehr {
 }
 
 .section123 {
-    background-color: #fafafa;
+    background-color: #fff;
 
 }
 
@@ -2954,6 +2954,16 @@ label{
     cursor: pointer;
     bottom: 3px;
 }
+
+#caticon2{
+
+
+    z-index: 100;
+    border-radius: 90px;
+    cursor: pointer;
+    bottom: 3px;
+}
+
 
 #categories-bg{
     background-color: #fafafa !important;

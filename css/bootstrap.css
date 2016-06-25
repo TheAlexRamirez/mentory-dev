@@ -1604,7 +1604,7 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  height: 150vh;
+  height: auto;
 }
 @media (min-width: 768px) {
   .container23 {
@@ -1628,12 +1628,12 @@ pre code {
 }
 @media (min-width: 992px) {
   .container1 {
-    width: 10%;
+    width: 25%;
   }
 }
 @media (min-width: 1200px) {
   .container1 {
-    width: 15%;
+    width: 25%;
   }
 }
 
