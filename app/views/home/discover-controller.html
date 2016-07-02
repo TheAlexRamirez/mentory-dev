@@ -4,57 +4,55 @@
                 <div class="row">
                     <img  style="width:100%; height:250px " src="upload/herotag.jpg">
                 </div>
-            </div> 
+            </div>
 
             <h2  class="text-center"style="color:#000"> -  {{discover.categoryToShow}} -</h2>
 
-            
+
 
 
             <div class="container2" style="float:left">
-            
+
 
                 <div class="content-before">
                     <div class="row" style="height:50px">
-                        
+
                         <div class="col-md-12 text-right hidden-xs">
                             <div class="catalog-order">
-                            
-							Ordenar por:
-							<select name="orderby" class="selectpicker" ng-model="sortType">
-								
-								<option value="-created" selected>Nuevos</option>
-								<option value="name" >Ordenar alfabeticamente</option>
-							</select>
+
+                							Ordenar por:
+                							<select name="orderby" class="selectpicker" ng-model="sortType">
+
+                								<option value="-created" selected>Nuevos</option>
+                								<option value="name" >Ordenar alfabeticamente</option>
+                							</select>
                             </div>
-                           
                         </div>
                     </div><!-- end row -->
                 </div><!-- end content before -->
 
-				
-				
+
+
                 <div class="content">
                     <div class="row">
 
 
-                        <div class="form-group row wow fadeIn">
-                                        
+                        <div class="form-group row wow fadeIn" ng-repeat="user in discover.people | orderBy: 'cost' " ng-if="discover.sortCost(user)" >
+
                                         <div class="col-sm-2 col-xs-12">
-                                            <a href="single-item.html" class="screenshot" data-gal="upload/louren.jpg" title="This is an item title <span>$12.00</span>"><img class="img-responsive img-circule"  style="border-radius:100%"src="upload/louren.jpg" alt=""></a>
+                                            <img class="img-responsive img-circule"  style="border-radius:100%" ng-src="{{user.profileimage}}" alt=""></a>
                                         </div>
                                         <div class="col-sm-7 col-xs-12">
-                                            <h4><a href="">Lauren Philipes</a></h4>
+                                            <h4><a ng-click='discover.goToProfile(user.iduser)'>{{user.name}}</a></h4>
                                             <ul>
-                                                <li><a href="#"><i class="fa fa-user"></i> DesignElite</a></li>
-                                                <li><a href="#"><i class="fa fa-envelope-o"></i> Get Support</a></li>
-                                                <li><a href="#"><i class="fa fa-folder-open-o"></i> IOS Applications</a></li>
+                                                <li><i class="fa fa-user"></i> {{user.job}}</li>
+                                                <li><i class="fa fa-envelope-o"></i> {{user.cost | currency}}</li>
+                                                <li><i class="fa fa-folder-open-o"></i> IOS Applications</li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3 col-xs-12 text-center">
                                             <ul>
-                                                <li><a href="#" class="btn btn-primary btn-block">Llamar Mentor</a></li>
-                                                <li><a href="" title="">221 Sales</a></li>
+                                                <li><a class="btn btn-primary btn-block" ng-click="discover.goToProfile(user.iduser)">Llamar Mentor</a></li>
                                                 <li>
                                                     <div class="rating">
                                                         <i class="fa fa-star"></i>
@@ -64,54 +62,21 @@
                                                         <i class="fa fa-star"></i>
                                                     </div>
                                                 </li>
+                                                <div class="tags tags-categories text-left">
+                                                <br>
+                                                    <a class="btn2-hover"  ng-repeat="category in user.categories" ng-if="$index < 1"> {{category.name}} </a>
+
+                                                </div>
                                             </ul>
                                         </div>
-                                    </div><!-- end form-group --> 
-						
-                        <div class="col-md-4 col-sm-6" ng-repeat="user in discover.user | orderBy: sortType "  ng-if="discover.hasThisCategory(user.categories)" ng-click='discover.goToProfile(user.iduser)' >
-							
-                            <div class="item-box" >
-                                <div class="item-media entry">
-                                    <div class="theme__button">
-                                        <p><a href="single-item.html" title="">{{mentory.cost | currency}}</a></p>
-                                    </div>
-                                    <img ng-src="{{home.person.profileimage}}" alt="" class="img-responsive" >
-                                    <div class="magnifier">
-										
-                                        <div class="item-author">
-                                            <h2 style="color:#fff" class="item-author-titule text-left">{{mentory.person.name}}</h2>
-                                            <p style="color:#fff; top:10px" class="item-author-titule text-left">{{mentory.person.job}}</p>
-                                            <li class="text-left">
-                                                    <div class="rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
-                                                </li>
-                                            <div class="tags tags-categories text-left">
-                                            <br>
-                                                <a class="btn2-hover"  ng-repeat="category in mentory.categories" ng-if="$index < 1"> {{category.name}} </a> 
-                                        
-                                            </div>
-                                        </div><!-- end author -->
-										
-                                    </div>
-                                </div><!-- end item-media -->
-                                <h4><a ng-href="#/mentory/{{mentory.idmentory}}">{{mentory.name}}</a></h4>
-                                <small><a><i class="fa fa-phone"></i> 193</a></small>
-                                <small><a ><i class="fa fa-comment-o"></i> 12</a></small>
-                                
-                            </div><!-- end item-box -->
-                        </div><!-- end col -->
-	     
-                    </div>
+                        </div><!-- end form-group -->
+
+                      </div>
                 </div>
 
 				<!--Pagination
                <div class="content-after text-center boxs">
-                    
+
 						<div class="row">
                         <div class="col-md-12">
                             <nav class="pagination-wrapper">
@@ -132,16 +97,16 @@
                     </div>
                 </div><!-- end content after -->
 
-                       
+
                 <div class="content-message boxs" style="background-color:#1BBC9B">
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1 text-center">
                             <!--<img stye="background-img responsive-img" src="upload/baner.jpg">-->
-                           
+
                             <div class="Suscribete" style="background-color:#1BBC9B">
                                     <h1 style="font-family: futura-Medium; color:#fff">Suscribete a Mentory Live</h1>
                                     <button class="btn" style="background-color:#1BA39C; border-radius:30px; color:#fff">  Registrate y obten 7 dias gratis</button>
-                                    
+
 
                             </div>
                         </div>
@@ -155,31 +120,26 @@
 
                     <h3 style="font-family:futura-Medium">Precios(pesos)</h3>
 
-                    <rzslider rz-slider-model="home.searchCost"  rz-slider-options="home.sliderOptions"></rzslider>
+                    <rzslider rz-slider-model="discover.searchCost"  rz-slider-options="discover.sliderOptions" rz-slider-high="discover.maxCost"></rzslider>
 
-                    <h3 style="font-family:futura-Medium">Areas de Exertis</h3>
+                    <h3 style="font-family:futura-Medium">Categorías</h3>
 
 
                     <div>
-                        <li>
-                            <ul class="subarea" style="font-family:futura-Medium">Backend</ul>
-                            <ul class="subcategory" style="font-family:futura-Medium">Angular.js</ul>
-                            <ul class="subcategory" style="font-family:futura-Medium">Angular.js</ul>
-                            <ul class="subcategory" style="font-family:futura-Medium">Angular.js</ul>
-                            <ul class="subcategory" style="font-family:futura-Medium">Angular.js</ul>
-                            <ul class="subcategory" style="font-family:futura-Medium">Angular.js</ul>
-                            <ul class="subcategory" style="font-family:futura-Medium">Angular.js</ul>
-                        </li>
+
+                        <span ng-repeat="category in discover.categories | limitTo: 10" ng-click="discover.goToDiscover(category.name)">
+                          {{category.name}}
+                        <span><br>
                     </div>
 
                     <h3 style="font-family:futura-Medium">Otras Categorias</h3>
-                    
 
 
-        
+
+
 
                 </div><!-- end Row -->
 
             </div><!-- end Sidebar -->
-            
+
         </section>

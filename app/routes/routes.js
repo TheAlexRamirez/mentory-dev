@@ -1,17 +1,17 @@
 (function(){
 	'use strict';
-	
+
 	angular
 		.module('mentory')
 		.config(configuration);
 
 	configuration.$inject =['$routeProvider', 'LoopBackResourceProvider','$httpProvider'];
 	function configuration($routeProvider, LoopBackResourceProvider,$httpProvider){
-		
+
 		$httpProvider.interceptors.push(function($q, $location, LoopBackAuth) {
 		  return {
 			responseError: function(rejection) {
-			 
+
 				/*if (rejection.status == 401) {
 				//Now clearing the loopback values from client browser for safe logout...
 				LoopBackAuth.clearUser();
@@ -19,7 +19,7 @@
 				$location.nextAfterLogin = $location.path();
 				$location.path('/login');
 			  }*/
-				
+
 				 /*if (rejection.status == 500) {
 				//Now clearing the loopback values from client browser for safe logout...
 				LoopBackAuth.clearUser();
@@ -28,17 +28,17 @@
 				$location.path('/login');
 					 app.isAuthorized=false;
 			  }*/
-			
-			
+
+
 			  return $q.reject(rejection);
 			}
 		  };
 		});
-		
+
 		// Use a custom auth header instead of the default 'Authorization'
 		LoopBackResourceProvider.setAuthHeader('X-Access-Token');
 
-		
+
 		$routeProvider
 		.when('/',
         {
@@ -46,7 +46,7 @@
           controller  : 'landingCtrl',
           controllerAs: 'register',
           resolve : {
-				
+
           }
         })
 		 .when('/home',
@@ -59,44 +59,60 @@
 			     "currentAuth" : ["Person" ,function(Person){
 					Person.isAuthenticated();
 				}] , "users" : ["Person" ,function(Person){
-					return Person.find( {  
-					filter: 	{ limit : 25 , include: ["categories"] }}); 	
+					return Person.find( {
+					filter: 	{ limit : 25 , include: ["categories"] }});
 				}], "categories" : ["Category" ,function(Category){
-					return Category.find( {  
-					filter: 	{ limit : 50 }}); 	
+					return Category.find( {
+					filter: 	{ limit : 50 }});
 				}]
           },
 			authenticate: true
         })
-		.when('/discover/:category', 
+		.when('/discover/:category',
         {
           templateUrl : './app/views/home/discover-controller.html',
           controller  : 'discoverCtrl',
           controllerAs: 'discover',
           resolve : {
 				// controller will not be loaded until $waitForAuth resolves
-			     "mentories" : ["$route","Mentory" ,function($route,Mentory){
-					return Mentory.find({ filter: {
-							  include: ["categories","person"]
-							}}); 	
-				}]
+						"people" : ["$route","Person" ,function($route,Person){
+					 return Person.find({ filter: {
+
+								 include: {
+									 relation : "categories",
+									 scope: {
+										 where : {
+											 "name" : {"regexp": "/"+$route.current.params.category+"*/i" }
+										 }
+									 }
+								 }
+							 }});
+				 }],"categories" : ["Category" ,function(Category){
+ 					return Category.find( {
+ 					filter: 	{ limit : 50 }});
+ 				}]
+				
           }
         })
-		.when('/search/:mentory', 
+		.when('/search/:query',
         {
           templateUrl : './app/views/home/search-controller.html',
           controller  : 'searchCtrl',
           controllerAs: 'search',
           resolve : {
 				// controller will not be loaded until $waitForAuth resolves
-			     "mentories" : ["$route","Person" ,function($route,Person){
+			     "people" : ["$route","Person" ,function($route,Person){
 					return Person.find({ filter: {
-							  
-							  where : {
-								  "name" : {"regexp": "/"+$route.current.params.mentory+"*/i" }
-							  },
-								include: ["categories"]
-							}}); 	
+
+		            include: {
+		              relation : "categories",
+		              scope: {
+		                where : {
+		                  "name" : {"regexp": "/"+$route.current.params.query+"*/i" }
+		                }
+		              }
+		            }
+		          }});
 				}]
           }
         })
@@ -106,7 +122,7 @@
           controller  : 'loginCtrl',
           controllerAs: 'login',
           resolve : {
-            
+
           }
         })
         .when('/live/:sessionid',
@@ -116,11 +132,11 @@
           controllerAs: 'live',
           resolve : {
 			  booking : ["$route","Book",function($route,Book){
-						return Book.findOne({ 
+						return Book.findOne({
 						  filter: { where: { sessionid : $route.current.params.sessionid } }
-						}); 	
+						});
 					}]
-            
+
           }
         })
         .when('/agenda',
@@ -129,7 +145,7 @@
           controller  : 'agendaCtrl',
           controllerAs: 'agenda',
           resolve : {
-            
+
           }
         })
         .when('/jobs',
@@ -138,7 +154,7 @@
           controller  : 'jobsCtrl',
           controllerAs: 'jobs',
           resolve : {
-            
+
           }
         })
 		.when('/profile/:id',
@@ -148,13 +164,13 @@
           controllerAs: 'profile',
           resolve : {
 			  currentProfile : ["$route","Person",function($route,Person){
-					return Person.findById({ id: $route.current.params.id ,  
-					filter: 	{ include : 'categories'} 
-				 
-							  }); 	
+					return Person.findById({ id: $route.current.params.id ,
+					filter: 	{ include : 'categories'}
+
+							  });
 				}]
-			  
-			  
+
+
           },
 		  authenticate: true
         })
@@ -163,8 +179,8 @@
           templateUrl : './app/views/dashboard/dashboard.html',
 		  controller  : 'dashCtrl',
           controllerAs: 'main',
-          resolve : {		
-			 
+          resolve : {
+
           },
 		  authenticate: true
         })
@@ -173,7 +189,7 @@
       });
   	}
 
-	
+
 
 
 })();
